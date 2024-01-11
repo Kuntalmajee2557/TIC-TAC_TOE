@@ -35,6 +35,7 @@ nav ul {
     grid-template-rows: repeat(3, 10vw);
     grid-template-columns: repeat(3, 10vw);
     font-family: 'Roboto Mono', monospace;
+    position: relative;
 
 }
 
@@ -93,6 +94,14 @@ nav ul {
 
 .gameInfo h1{
     font-size: 1.5rem;
+}
+
+.line{
+    background-color: black;
+    height: 3px;
+    width: 0;
+    position: absolute;
+    transition: width 200ms ease-in-out;
 }
 
 @media only screen and (max-width: 800px) {
