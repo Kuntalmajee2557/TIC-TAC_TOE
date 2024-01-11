@@ -68,6 +68,9 @@ reset.addEventListener("click", () => {
     document.getElementsByClassName("info")[0].innerText ="Turn for " + turn;
     document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width = "0px";
 
+    document.querySelector(".line").style.width = "0vw";
+            document.querySelector(".line").style.transform = `translate(0vw, 0vw) rotate(0deg)`;
+
     
   
 })
