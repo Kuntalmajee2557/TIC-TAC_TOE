@@ -4,6 +4,7 @@ let audioTurn = new Audio("ting.mp3");
 let gameover = new Audio("gameover.mp3");
 let turn = "X";
 let isgameover = false;
+let isTie = false;
 
 //function to chage the turn
 const changeTurn = () => {
@@ -38,6 +39,15 @@ const checkWin = () => {
     })
 }
 
+const checkTie = () => {
+    let boxtext = document.getElementsByClassName('boxtext');
+    if (((boxtext[0].innerText !== "" && boxtext[1].innerText !== "") && (boxtext[2].innerText !== "" && boxtext[3].innerText !== "")) && ((boxtext[4].innerText !== "" && boxtext[5].innerText !== "") && (boxtext[6].innerText !== "" && boxtext[7].innerText !== "")) && boxtext[8].innerText !== "") {
+        document.querySelector(".info").innerText = "Game Tie";
+        isTie = true;
+
+    }
+}
+
 //game logic
 // music.play();
 let boxes = document.getElementsByClassName("box");
@@ -50,7 +60,10 @@ Array.from(boxes).forEach(element => {
             audioTurn.play();
             checkWin();
             if (!isgameover) {
-                document.getElementsByClassName("info")[0].innerText = "turn for " + turn;
+                checkTie();
+                if (!isTie) {
+                    document.getElementsByClassName("info")[0].innerText = "turn for " + turn;
+                }
             }
         }
     })
@@ -64,13 +77,14 @@ reset.addEventListener("click", () => {
         element.innerText = "";
     });
     turn = "X";
-    isgameover =false;
-    document.getElementsByClassName("info")[0].innerText ="Turn for " + turn;
+    isgameover = false;
+    isTie = false;
+    document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     document.querySelector(".imgbox").getElementsByTagName("img")[0].style.width = "0px";
 
     document.querySelector(".line").style.width = "0vw";
-            document.querySelector(".line").style.transform = `translate(0vw, 0vw) rotate(0deg)`;
+    document.querySelector(".line").style.transform = `translate(0vw, 0vw) rotate(0deg)`;
 
-    
-  
+
+
 })
